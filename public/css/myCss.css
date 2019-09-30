@@ -1,0 +1,66 @@
+
+
+:root {
+    --pink1: #BF5172;
+    --pink2: #ECA0B7;
+    --pink3: #ECA0B7;
+    --pink4: #F5BECE;
+    --pink5: #FBE1E9;
+
+    --blue1: #465B8F;
+    --blue2: #6477A5;
+    --blue3: #8C9CC3;
+    --blue4: #B3BFE0;
+    --blue5: #DCE3F3;
+
+    --yellow1: #D5C05B;
+    --yellow2: #F6E389;
+    --yellow3: #FFF1AE;
+    --yellow4: #FFF5C6;
+    --yellow5: #FFFAE4;
+
+    -green1: #82BE51;
+    -green2: #A6DB7A;
+    -green3: #C2EBA0;
+    -green4: #D6F5BD;
+    -green5: #EDFBE1;
+}
+
+.navbar-custom {
+    background-color: var(--pink5);
+    font-family: 'Nunito', 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+}
+
+.navbar-custom .navbar-nav .nav-link, .navbar-custom .navbar-brand {
+    color: var(--blue1);
+}
+
+body{
+        font-family: 'Source Sans Pro';
+
+}
+
+.table-custom .thead {
+    background-color:var(--pink5);
+
+}
+
+.card-custom{
+        background-color: var(--pink5);
+
+}
+
+.btn-custom{
+    background: var(--blue1);
+    color:white;
+}
+
+.btn-custom:hover{
+    background: var(--pink1);
+    color: white;
+}
+
+.table-hover tbody tr:hover{
+    background: var(--pink5);
+}
