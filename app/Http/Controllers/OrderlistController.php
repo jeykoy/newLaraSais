@@ -111,10 +111,6 @@ class OrderlistController extends Controller
         return redirect('/');        
     } 
 
-    public function getLatestId(){
-
-    }
-
     /**
      * Display the specified resource.
      *
@@ -123,7 +119,7 @@ class OrderlistController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

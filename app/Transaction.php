@@ -8,4 +8,9 @@ class Transaction extends Model
 {
     //
     protected $guarded=[];
+
+    public function orderlist(){
+        return $this->belongsTo(Orderlist::class);
+    }
+
 }

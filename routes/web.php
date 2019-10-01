@@ -19,7 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/orderlists','OrderlistController');
-
-Route::get('/orderlistCompute', function () {
-    return view('orderlists.index');
-});
+Route::resource('/transactions','TransactionController');
