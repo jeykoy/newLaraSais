@@ -15,7 +15,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('order_id');
+            $table->unsignedInteger('orderlist_id');
             $table->date('transactionDate');
             $table->boolean('isCompleted')->default(false);
             $table->foreign('order_id')->references('id')->on('orderlists');
