@@ -65,3 +65,7 @@ body{
     background: var(--pink5);
 }
 
+.dropdown-item:hover{
+    background: var(--pink5);
+}
+

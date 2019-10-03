@@ -32,6 +32,12 @@
         <ul class="navbar-nav mr-auto">
             @auth
                 @if(auth()->user()->role == 'customer')
+                <li class="nav-item active">
+                        <a class="nav-link" href='#'>
+                            <i class="fa fa-eye"></i> Browse Products                       
+                        </a>
+                    </li>    
+                
                     <li class="nav-item active">
                         <a class="nav-link" href="/orderlists">
                             <i class="fa fa-list-ol"></i> Place Order                       
@@ -39,18 +45,21 @@
                     </li>      
                     <li class="nav-item dropdown">                       
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-list-ol"></i> My Transactions                       
+                            <i class="fa fa-exchange"></i> My Transactions                       
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/transactions">Pending Orders</a>
                              <a class="dropdown-item" href="/transactions/completed">Completed Order</a>
-                        </div>
-                       
+                        </div>                       
                     </li> 
-                     <li class="nav-item active">
-                        <a class="nav-link" href="/payments">
-                            <i class="fa fa-list-ol"></i> Payments                       
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-dollar"></i> Payments                       
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/transactions">Pending Payments</a>
+                             <a class="dropdown-item" href="/transactions/completed">Completed Order</a>
+                        </div>  
                     </li>               
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
@@ -61,7 +70,7 @@
         <ul class="navbar-nav ml-auto">
             @guest
                 <li class="nav-item">
-                <a class="nav-link" href="{{route('login')}}">LOGIN</a>
+                <a class="nav-link" href="{{route('login')}}"> LOGIN</a>
             </li>
              <li class="nav-item">
                 <a class="nav-link" href="{{route('register')}}">REGISTER</a>
@@ -78,10 +87,10 @@
                         Welcome {{auth()->user()->name}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">My Account</a>
+                        <a class="dropdown-item" href="#"> <i class="fa fa-user-circle-o"></i> My Account</a>
                         <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
+                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                             <i class="fa fa-sign-out"></i>  Logout
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
