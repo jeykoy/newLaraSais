@@ -19,10 +19,15 @@
 
 <body>
 <nav class="navbar navbar-custom navbar-expand-lg shadow-sm">
+    
         <a class="navbar-brand" href="/">
             <img src="https://pbs.twimg.com/profile_images/1682838784/mk2_400x400.png" width="50" height="50" alt="">
             MARY KAY
         </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+        </button>
+
     <div id="my-nav" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             @auth
@@ -31,7 +36,22 @@
                         <a class="nav-link" href="/orderlists">
                             <i class="fa fa-list-ol"></i> Place Order                       
                         </a>
-                    </li>                    
+                    </li>      
+                    <li class="nav-item dropdown">                       
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-list-ol"></i> My Transactions                       
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/transactions">Pending Orders</a>
+                             <a class="dropdown-item" href="/transactions/completed">Completed Order</a>
+                        </div>
+                       
+                    </li> 
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/payments">
+                            <i class="fa fa-list-ol"></i> Payments                       
+                        </a>
+                    </li>               
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
                     </li>                    

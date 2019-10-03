@@ -1,11 +1,20 @@
 @extends('layouts.main')
 
+
 @section('content')
-<div class="container mt-5">
-    <div class="row">
-        <div class="col">
-            <h1 class="display-4">My Transactions</h1>
-            <?php
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="display-4">Order History</h1>
+                @if ($transactions->isEmpty())
+                     <div class="card">
+                    <div class="card-header">
+                        <h4>no records found</h4>
+                    </div>                    
+                </div>
+                @endif
+                            <div class="accordion" id="accordionExample">
+                <?php
                 $printNewHeader = true;
                 $printNewBody = true;
 
@@ -17,16 +26,7 @@
                 $count=0;
                // dd($lastKey);
              ?>
-            <div class="accordion" id="accordionExample">
-            @if ($transactions->isEmpty())
-                <div class="card">
-                    <div class="card-header">
-                        <h4>no records found</h4>
-                    </div>                    
-                </div>
-            @endif
-
-             @foreach ($transactions as $trans)
+                @foreach ($transactions as $trans)
                 {{--if same ng order Id add new table entry--}}
                 @if ($index == $trans->order_id && $printNewBody==false)
                     <?php 
@@ -41,7 +41,7 @@
                      </tr>
                      @if ($lastKey == $count)
                                  <tr>
-                                    <td class="text-right display-4" colspan="4">PHP{{$total}}.00</td>
+                                    <td class="text-right display-4" colspan="4">PHP {{$total}}.00</td>
                                </tr>
                          </tbody>
                             </table>
@@ -51,7 +51,7 @@
                      @endif
                 @elseif($index != $trans->order_id && $printNewBody==false) {{--Close body, table, and div--}}
                                <tr>
-                                    <td class="text-right display-4" colspan="4">PHP{{$total}}.00</td>
+                                    <td class="text-right display-4" colspan="4">PHP {{$total}}.00</td>
                                </tr>
                                 </tbody>
                             </table>
@@ -68,7 +68,7 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-custom" type="button" data-toggle="collapse" data-target="#collapse{{$accordionId}}"
+                                <button class="btn btn-block btn-custom" type="button" data-toggle="collapse" data-target="#collapse{{$accordionId}}"
                                     aria-expanded="true" aria-controls="collapseOne">
                                      Transaction #{{$trans->order_id}} : {{$trans->created_at}}
                                 </button>
@@ -111,12 +111,7 @@
                 ?>
                
              @endforeach
-              
-        </div>{{--end of col--}}
-    </div>{{--end of row--}}
-</div>{{--end of container--}}
-
-
-
-    
+            </div>
+        </div>
+    </div>
 @endsection

@@ -33,7 +33,7 @@
 }
 
 .navbar-custom .navbar-nav .nav-link, .navbar-custom .navbar-brand {
-    color: var(--blue1);
+    color: black;
 }
 
 body{
@@ -64,3 +64,4 @@ body{
 .table-hover tbody tr:hover{
     background: var(--pink5);
 }
+

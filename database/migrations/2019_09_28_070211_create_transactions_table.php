@@ -17,6 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('order_id');
             $table->date('transactionDate');
+            $table->boolean('isCompleted')->default(false);
             $table->foreign('order_id')->references('id')->on('orderlists');
             $table->timestamps();
         });

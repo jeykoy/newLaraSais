@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::get('/transactions/completed', 'TransactionController@completed');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/orderlists','OrderlistController');
 Route::resource('/transactions','TransactionController');
+Route::resource('/payments', 'PaymentController');
+

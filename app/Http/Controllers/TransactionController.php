@@ -21,11 +21,36 @@ class TransactionController extends Controller
     {
         $transactions = DB::table('transactions')
         ->join('orderlists','transactions.order_id','=','orderlists.id')
-        ->select('transactions.id','transactions.transactionDate','transactions.order_id','orderlists.item_Id','orderlists.orderQuantity')
+        ->join('items', 'orderlists.item_Id','=','items.id')
+        ->select('transactions.id','transactions.transactionDate','transactions.order_id',
+        'orderlists.item_Id','orderlists.orderQuantity','items.itemName','items.price','transactions.created_at')
         ->where('orderlists.customer_id','=',auth()->user()->id)
+        ->where('transactions.isCompleted','=','0')
         ->get();
-        //dd($transactions);
+        //dd($transactions);     
+
         return view('transactions.index', compact('transactions'));
+    }
+
+    public function completed(){
+        $transactions = DB::table('transactions')
+            ->join('orderlists', 'transactions.order_id', '=', 'orderlists.id')
+            ->join('items', 'orderlists.item_Id', '=', 'items.id')
+            ->select(
+                'transactions.id',
+                'transactions.transactionDate',
+                'transactions.order_id',
+                'orderlists.item_Id',
+                'orderlists.orderQuantity',
+                'items.itemName',
+                'items.price',
+                'transactions.created_at'
+            )
+            ->where('orderlists.customer_id', '=', auth()->user()->id)
+            ->where('transactions.isCompleted', '=', '1')
+            ->get();
+            //dd($transactions);
+        return view('transactions.completed',compact('transactions'));
     }
 
     /**
@@ -44,6 +69,7 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         //
@@ -55,7 +81,7 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+public function show($id)   
     {
         //
     }
