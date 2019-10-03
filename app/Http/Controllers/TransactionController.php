@@ -20,9 +20,10 @@ class TransactionController extends Controller
     public function index()
     {
         $transactions = DB::table('transactions')
-        ->join('orderlists','transactions.order_id','=','orderlists.id')
+        ->join('orderlists', 'transactions.orderlist_id','=','orderlists.id')
         ->join('items', 'orderlists.item_Id','=','items.id')
-        ->select('transactions.id','transactions.transactionDate','transactions.order_id',
+        ->select('transactions.id','transactions.transactionDate',
+            'transactions.orderlist_id',
         'orderlists.item_Id','orderlists.orderQuantity','items.itemName','items.price','transactions.created_at')
         ->where('orderlists.customer_id','=',auth()->user()->id)
         ->where('transactions.isCompleted','=','0')
@@ -34,12 +35,12 @@ class TransactionController extends Controller
 
     public function completed(){
         $transactions = DB::table('transactions')
-            ->join('orderlists', 'transactions.order_id', '=', 'orderlists.id')
+            ->join('orderlists', 'transactions.orderlist_id', '=', 'orderlists.id')
             ->join('items', 'orderlists.item_Id', '=', 'items.id')
             ->select(
                 'transactions.id',
                 'transactions.transactionDate',
-                'transactions.order_id',
+                'transactions.orderlist_id',
                 'orderlists.item_Id',
                 'orderlists.orderQuantity',
                 'items.itemName',

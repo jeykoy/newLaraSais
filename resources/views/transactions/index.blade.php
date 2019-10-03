@@ -28,7 +28,7 @@
 
              @foreach ($transactions as $trans)
                 {{--if same ng order Id add new table entry--}}
-                @if ($index == $trans->order_id && $printNewBody==false)
+                @if ($index == $trans->orderlist_id && $printNewBody==false)
                     <?php 
                         $subtotal = $trans->price * $trans->orderQuantity; 
                         $total = $total + $subtotal;
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                      @endif
-                @elseif($index != $trans->order_id && $printNewBody==false) {{--Close body, table, and div--}}
+                @elseif($index != $trans->orderlist_id && $printNewBody==false) {{--Close body, table, and div--}}
                                <tr>
                                     <td class="text-right display-4" colspan="4">PHP{{$total}}.00</td>
                                </tr>
@@ -58,7 +58,7 @@
                         </div>
                         </div>
                     </div>
-                    <?php $index = $trans->order_id;
+                    <?php $index = $trans->orderlist_id;
                     $printNewBody = true;
                     $printNewHeader = true;
                      $accordionId++;?>
@@ -70,7 +70,7 @@
                             <h2 class="mb-0">
                                 <button class="btn btn-custom" type="button" data-toggle="collapse" data-target="#collapse{{$accordionId}}"
                                     aria-expanded="true" aria-controls="collapseOne">
-                                     Transaction #{{$trans->order_id}} : {{$trans->created_at}}
+                                     Transaction #{{$trans->orderlist_id}} : {{$trans->created_at}}
                                 </button>
                             </h2>
                         </div>
@@ -104,7 +104,7 @@
                 @endif
 
                 <?php
-                    $index = $trans->order_id;
+                    $index = $trans->orderlist_id;
                     $printNewBody = false;
                     $printNewHeader = false;
                      $count++;

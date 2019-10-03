@@ -103,7 +103,7 @@ class OrderlistController extends Controller
         }
        
         Transaction::create([
-            'order_id' => $maxId,
+            'orderlist_id' => $maxId,
             'transactionDate' => now()
         ]);
 

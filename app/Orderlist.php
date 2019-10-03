@@ -12,3 +12,4 @@ class Orderlist extends Model
         return $this->hasMany(Transaction::class);
     }
 }
+    
