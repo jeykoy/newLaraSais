@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->date('transactionDate');
             $table->boolean('isCompleted')->default(false);
             $table->foreign('order_id')->references('id')->on('orderlists');
+            $table->boolean('isCancelled')->default(false);
             $table->timestamps();
         });
     }
@@ -33,3 +34,4 @@ class CreateTransactionsTable extends Migration
         Schema::dropIfExists('transactions');
     }
 }
+
